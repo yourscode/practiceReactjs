@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 面向对象有三大特性 ： 封装、继承、多态
+  继承：减少重复代码 -->
+    <script>
+      class Person {
+        constructor(name, age) {
+          this.name = name
+          this.age = age
+        }
+
+        running() {
+          console.log('running...')
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, sno) {
+          super(name, age) //子类中必须初始化父类对象
+          this.sno = sno
+        }
+      }
+      let person = new Person('hzh', 17, 6666)
+      console.log(person.name, person.age)
+      person.running()
+
+      class Teacher extends Person {
+        constructor(name, age, title) {
+          super(name, age)
+          this.title = title
+        }
+      }
+      let teacher = new Teacher('this is teacher', 28, '高级教师')
+      console.log(teacher.name, teacher.age)
+      teacher.running()
+    </script>
+  </body>
+</html>
