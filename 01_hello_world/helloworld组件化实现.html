@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">ksfalj</div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      //封装App组件
+      class App extends React.Component {
+        constructor() {
+          super()
+          // this.message = 'hello world!'
+          this.state = {
+            message: 'hello world & react!!',
+          }
+        }
+        render() {
+          return (
+            <div>
+              <h2>{this.state.message}</h2>
+              <button onClick={this.btnClick.bind(this)}>改变文本</button>
+            </div>
+          )
+          //为什么只能使用bind不能使用callapply
+          // 与call的区别就是，后面的参数是一个数组
+          // bind：语法和call一模一样，唯一的区别在于立即执行还是等待执行
+          // fn.call(obj, 10, 20) 改变fn中的this,并且把fn立即执行
+          // fn.bind(obj, 10, 20)改变fn中的this,并且此时读fn并没有执行
+        }
+        btnClick() {
+          // console.log(this)
+          // this.message = 'hello change'
+          this.setState({
+            message: 'hello change!',
+          })
+        }
+      }
+
+      //渲染组件
+      ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+  </body>
+</html>
