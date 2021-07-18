@@ -16,11 +16,28 @@
       class App extends React.Component {
         constructor() {
           super()
-          this.state = {}
+          this.state = {
+            count: 0,
+          }
+        }
+        //使用creatreact创建的字符模板
+        render() {
+          return (
+            <div>
+              {/*这是一段注释，注释得这样写*/}
+              <h2>计数</h2>
+              <h2>{this.state.count}</h2>
+              <button onClick={this.add.bind(this)}>+1</button>
+              <button onClick={this.decrement.bind(this)}>-1</button>
+            </div>
+          )
         }
 
-        render() {
-          return <div>hello</div>
+        add() {
+          this.setState({ count: this.state.count + 1 })
+        }
+        decrement() {
+          this.setState({ count: this.state.count - 1 })
         }
       }
 
