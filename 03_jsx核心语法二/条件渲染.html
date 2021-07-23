@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">kjfka</div>
+
+    <script src="../reactjs/react.development.js"></script>
+    <script src="../reactjs/react-dom.development.js"></script>
+    <script src="../reactjs/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super()
+          this.state = {
+            isLogin: true,
+          }
+        }
+
+        render() {
+          const { isLogin } = this.state
+          {
+            /*if判断*/
+          }
+          let message = null
+          if (this.state.isLogin) {
+            message = <h2>欢迎回来~</h2>
+          } else {
+            message = <h2>请先登入~</h2>
+          }
+          return (
+            <div>
+              <h1>{message}</h1>
+              <button onClick={(e) => this.loginClick()}>
+                {this.state.isLogin ? '退出' : '登入'}
+              </button>
+              <hr />
+              <h2>{isLogin ? 'hzh' : null}</h2>
+              {isLogin && <h2>hzh</h2>}{' '}
+              {/*类似v-if效果当为true的时候，显示，为false的时候直接不渲染*/}
+            </div>
+          )
+        }
+        loginClick() {
+          this.setState({
+            isLogin: !this.state.isLogin,
+          })
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+  </body>
+</html>

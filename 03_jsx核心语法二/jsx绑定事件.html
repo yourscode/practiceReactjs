@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">kjfka</div>
+
+    <script src="../reactjs/react.development.js"></script>
+    <script src="../reactjs/react-dom.development.js"></script>
+    <script src="../reactjs/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super()
+          this.state = {
+            message: 'hello',
+            count: 1000,
+          }
+          this.btnClick = this.btnClick.bind(this)
+        }
+
+        render() {
+          return (
+            <div>
+              {/*方案一：bind绑定this（显示绑定）*/}
+              <button onClick={this.btnClick.bind(this)}>点击</button>
+              <button onClick={this.btnClick}>点击</button>
+              {/*定义函数时使用箭头函数，并使用赋值的方式*/}
+              <button onClick={this.add}>+1</button>
+              {/*直接传入一个箭头函数，在箭头函数中调用需要执行的函数*/}
+              <button
+                onClick={() => {
+                  this.decrement()
+                }}
+              >
+                -1
+              </button>
+            </div>
+          )
+        }
+        btnClick() {
+          console.log(this.state.message)
+        }
+        add = () => {
+          console.log(this.state.count)
+        }
+        //ES6中给对象添加属性class fields
+        decrement() {
+          console.log(this.state.count)
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+  </body>
+</html>

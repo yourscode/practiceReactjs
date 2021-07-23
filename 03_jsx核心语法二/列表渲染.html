@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">kjfka</div>
+
+    <script src="../reactjs/react.development.js"></script>
+    <script src="../reactjs/react-dom.development.js"></script>
+    <script src="../reactjs/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super()
+          this.state = {
+            names: ['erwer', 'wreq', 'sfda', 'dfx', 'xcvb', 'jgd'],
+            nums: [110, 123, 50, 32, 53, 10, 8, 333],
+          }
+        }
+
+        render() {
+          return (
+            <div>
+              <h2>名字渲染</h2>
+              <ul>
+                {this.state.names.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <h2>数字列表</h2>
+              <ul>
+                {this.state.nums
+                  .filter((item) => item > 50)
+                  .map((item) => (
+                    <li>{item}</li>
+                  ))}
+              </ul>
+              <h2>数字列表(截取)</h2>
+              <ul>
+                {this.state.nums.slice(0, 4).map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+  </body>
+</html>

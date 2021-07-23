@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">kjfka</div>
+
+    <script src="../reactjs/react.development.js"></script>
+    <script src="../reactjs/react-dom.development.js"></script>
+    <script src="../reactjs/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        constructor() {
+          super()
+          this.state = {
+            isLogin: true,
+          }
+        }
+
+        render() {
+          const { isLogin } = this.state
+          const titleDisplayValue = isLogin ? 'block' : 'none'
+          return (
+            <div>
+              <button
+                onClick={(e) => {
+                  this.btnClick()
+                }}
+              >
+                按钮
+              </button>
+              <h2 style={{ display: titleDisplayValue }}>hi,hzh!</h2>
+            </div>
+            {/*react中的jsx与JavaScript无缝衔接，让它可以更加的灵活，另外react是真正能提高我们代码编写能力的一种形式*/}
+          )
+        }
+        btnClick() {
+          this.setState({
+            isLogin: !this.state.isLogin,
+          })
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById('app'))
+    </script>
+  </body>
+</html>
