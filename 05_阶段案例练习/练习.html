@@ -40,7 +40,7 @@
               name: '《算法导论》',
               date: '2006-09',
               price: 85.00,
-              count: 1
+              count: 2
             },
             {id: 2,
               name: '《UNIX编程艺术》',
@@ -63,10 +63,8 @@
             ]
           }
         }
-
-        render() {
-          
-          return (
+bookFull(){
+  return (
             <div>
               <table>
                 <thead>
@@ -88,22 +86,43 @@
                     <td>{item.date}</td>
                     <td>{formatPrice(item.price)}</td>
                     <td>
-                      <button>+1</button>
+                      <button disabled={item.count <= 1} onClick={e=> this.changeBookCount(index,-1)}>-1</button>
                       <span className="count">{item.count}</span>
-                      <button>+1</button>
+                      <button onClick={e=> this.changeBookCount(index,1)}>+1</button>
                     </td>
                     <td>
-                      <button>移除</button>
+                      <button onClick={e=> this.removeBook(index)}>移除</button>
                       </td>
                   </tr>)
                   })}
                 </tbody>
               </table>
               <h2>总价格为：{this.getTotalPrice()}</h2>
-            </div>
+            </div>       
+                   
           )
-        }
+}
 
+        bookEmpty(){
+          return <h2>购物车为空~</h2>
+        }
+        render() {
+          
+          return this.state.books.length ? this.bookFull() : this.bookEmpty()
+        }
+        changeBookCount(index,count){
+          const newBooks = [...this.state.books];
+          newBooks[index].count += count
+          this.setState({
+            books: newBooks
+          })
+        }
+        removeBook(index){
+          //React中的设计原则：state中的数据不可变性
+          this.setState({
+            books: this.state.books.filter((item,indey)=> index!==indey)
+          })
+        }
         getTotalPrice(){
           // let total = 0;
           // for(let item of this.state.books){
@@ -111,14 +130,14 @@
           // }
           // return formatPrice(total)
           // 参数一： 上一次回调函数的结果：第一次没有上一次回调函数的结果，使用初始化值
-          // const total =  this.state.books.reduce((前一次回调函数的结果,item,,index,,arr)，initialvalue)
+          // const total =  this.state.books.reduce((前一次回调函数的结果,item,index,,arr)，initialvalue)
           const total =  this.state.books.reduce((preValue,item)=>{
           return preValue + item.price * item.count
           },0)
           return formatPrice(total)
         }
       }
-
+  
       ReactDOM.render(<App />, document.getElementById('app'))
     </script>
   </body>
