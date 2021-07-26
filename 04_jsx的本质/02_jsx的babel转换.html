@@ -17,31 +17,27 @@
         constructor() {
           super()
           this.state = {
-            isLogin: true,
           }
         }
 
         render() {
-          const { isLogin } = this.state
-          const titleDisplayValue = isLogin ? 'block' : 'none'
+          
           return (
             <div>
-              <button
-                onClick={(e) => {
-                  this.btnClick()
-                }}
-              >
-                按钮
-              </button>
-              <h2 style={{ display: titleDisplayValue }}>hi,hzh!</h2>
-              {/*react中的jsx与JavaScript无缝衔接，让它可以更加的灵活，另外react是真正能提高我们代码编写能力的一种形式*/}
+              <div className="header">
+                <h1 title="标题">我是标题</h1>
+                </div>
+              <div className="content">
+                <h2>我是页面内容</h2>
+                <button>按钮</button>
+                <button>+1</button>
+                <a href="http://www.baidu.com"></a>
+                </div>
+                <div className="footer">
+                  <p>我是尾部结构</p>
+                  </div>
             </div>
           )
-        }
-        btnClick() {
-          this.setState({
-            isLogin: !this.state.isLogin,
-          })
         }
       }
 
