@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './组件间的通信/01_组件间的嵌套';
+import App from './组件间的通信/04_父传子通信_属性验证';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
